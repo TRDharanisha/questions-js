@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Intersection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+        }
+        input {
+            padding: 10px;
+            width: calc(100% - 20px);
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: center;
+        }
+        button {
+            padding: 10px;
+            border: none;
+            background: #007bff;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .result {
+            margin-top: 15px;
+            font-weight: bold;
+            background: #f9f9f9;
+            padding: 10px;
+            border-radius: 5px;
+            width: 100%;
+            text-align: center;
+        }
+        a{
+            text-decoration: none;
+            color: black;
+            border: solid black 2px;
+            background-color:red;
+            border-radius: 15px;
+            padding: 5px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+<a href="./index.html">Home</a>
+<div class="container">
+    <h2>Find Intersection of Two Arrays</h2>
+    <input type="text" id="array1" placeholder="Enter first array (e.g., 1,2,3)">
+    <input type="text" id="array2" placeholder="Enter second array (e.g., 2,3,4)">
+    <button onclick="findIntersection()">Find Intersection</button>
+    <p id="output" class="result"></p>
+</div>
+
+<script>
+    function findIntersection() {
+        try {
+            let array1 = document.getElementById("array1").value.split(',').map(Number);
+            let array2 = document.getElementById("array2").value.split(',').map(Number);
+
+            let intersection = array1.filter(num => array2.includes(num));
+
+            document.getElementById("output").innerText = intersection.length ? `[ ${intersection.join(', ')} ]` : "No common elements";
+        } catch {
+            document.getElementById("output").innerText = "Invalid input! Please enter numbers separated by commas.";
+        }
+    }
+</script>
+
+</body>
+</html>

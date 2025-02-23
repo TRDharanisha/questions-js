@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group Objects</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+        }
+        input {
+            padding: 10px;
+            width: calc(100% - 20px);
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            display: block;
+            text-align: center;
+        }
+        button {
+            padding: 10px 15px;
+            border: none;
+            background: #007bff;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .result {
+            margin-top: 15px;
+            font-weight: bold;
+            word-wrap: break-word;
+            text-align: left;
+            background: #f9f9f9;
+            padding: 10px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            width: 100%;
+        }
+        a{
+            text-decoration: none;
+            color: black;
+            border: solid black 2px;
+            background-color:red;
+            border-radius: 15px;
+            padding: 5px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+<a href="./index.html">Home</a>
+<div class="container">
+    <h2>Group Objects by Property</h2>
+    <input type="text" id="arrayInput" placeholder='Enter objects [{"id":1,"category":"fruit"}]'>
+    <input type="text" id="propertyInput" placeholder="Enter property (e.g., category)">
+    <button onclick="groupByProperty()">Group</button>
+    <pre id="output" class="result"></pre>
+</div>
+
+<script>
+    function groupByProperty() {
+        try {
+            let array = JSON.parse(document.getElementById("arrayInput").value);
+            let property = document.getElementById("propertyInput").value;
+
+            let result = array.reduce((acc, obj) => {
+                let key = obj[property];
+                if (!acc[key]) acc[key] = [];
+                acc[key].push(obj);
+                return acc;
+            }, {});
+
+            document.getElementById("output").innerText = JSON.stringify(result, null, 2);
+        } catch {
+            document.getElementById("output").innerText = "Invalid input! Please enter valid JSON.";
+        }
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Maximum Number</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 350px;
+        }
+        input {
+            padding: 8px;
+            width: 90%;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 15px;
+            border: none;
+            background: #007bff;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .result {
+            margin-top: 15px;
+            font-weight: bold;
+            word-wrap: break-word;
+        }
+        a{
+            text-decoration: none;
+            color: black;
+            border: solid black 2px;
+            background-color:red;
+            border-radius: 15px;
+            padding: 5px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <a href="./index.html">Home</a>
+    <div class="container">
+    <h2>Find Maximum Number</h2>
+    <input type="text" id="userInput" placeholder="Enter numbers separated by commas (e.g., 1,3,2,8,5)">
+    <button onclick="findMax()">Find Max</button>
+    <p class="result" id="output"></p>
+</div>
+    <script>
+        function findMax() {
+            let input = document.getElementById("userInput").value;
+
+            let arr = input.split(',').map(num => num.trim()).map(Number);
+
+            if (arr.some(isNaN)) {
+                document.getElementById("output").innerText = "Invalid input! Please enter valid numbers.";
+                return;
+            }
+
+            let maxNum = Math.max(...arr);
+            document.getElementById("output").innerText = "Maximum Number: " + maxNum;
+        }
+    </script>
+
+</body>
+</html>
